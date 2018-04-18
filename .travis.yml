@@ -20,7 +20,7 @@ before_script:
 script:
 - 'npm run lint'
 - 'npm run build'
-- 'npm run package-all' # https://github.com/electron-userland/electron-builder/issues/504#issuecomment-326737539
+- 'npm run build && build -mwl'
 after_success:
 - 'pwd && ls -als'
 - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
