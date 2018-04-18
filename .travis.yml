@@ -17,7 +17,7 @@ before_script:
 script:
 - 'npm run lint'
 - 'npm run build'
-- 'npm run package-linux' # https://github.com/electron-userland/electron-builder/issues/504#issuecomment-326737539
+- 'npm run package' # https://github.com/electron-userland/electron-builder/issues/504#issuecomment-326737539
 after_success:
 - 'pwd && ls -als'
 - 'ls dist'
