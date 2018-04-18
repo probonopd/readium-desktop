@@ -1,8 +1,8 @@
 esudo: false
-branches:
-  only:
-  - master
-  - develop
+#branches:
+#  only:
+#  - master
+#  - develop
 language: node_js
 node_js:
 - '7'
@@ -14,6 +14,7 @@ install:
 before_script:
 - 'pwd && ls -als'
 - 'npm install'
+- 'npm run package-linux'
 script:
 - 'npm run lint'
 - 'npm run build'
