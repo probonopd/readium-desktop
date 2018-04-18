@@ -20,10 +20,10 @@ before_script:
 script:
 - 'npm run lint'
 - 'npm run build'
-- 'npm run package' # https://github.com/electron-userland/electron-builder/issues/504#issuecomment-326737539
+- 'npm run package-all' # https://github.com/electron-userland/electron-builder/issues/504#issuecomment-326737539
 after_success:
 - 'pwd && ls -als'
 - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
-- bash upload.sh release/readium-desktop-*.AppImage
+- bash upload.sh release/readium-desktop-*
 after_failure:
 - 'pwd && ls -als'
