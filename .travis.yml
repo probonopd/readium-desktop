@@ -1,5 +1,8 @@
 esudo: false
-#branches:
+branches:
+  except:
+  - # Do not build tags that we create when we upload to GitHub Releases
+  - /^(?i:continuous)$/
 #  only:
 #  - master
 #  - develop
@@ -20,6 +23,8 @@ script:
 - 'npm run package' # https://github.com/electron-userland/electron-builder/issues/504#issuecomment-326737539
 after_success:
 - 'pwd && ls -als'
-- 'ls dist'
+- wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
+- bash upload.sh out/*
+- 'release/readium-desktop-*.AppImage
 after_failure:
 - 'pwd && ls -als'
