@@ -19,6 +19,7 @@ before_script:
 script:
   - npm run lint
   - npm run build
+  - sudo apt-get install --no-install-recommends -y icnsutils wine1.8
   - sudo apt -y install wine
   - npm run build && build -mwl
 
