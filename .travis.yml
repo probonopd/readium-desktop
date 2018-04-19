@@ -1,29 +1,40 @@
-esudo: false
-branches:
-  except:
-  - # Do not build tags that we create when we upload to GitHub Releases
-  - /^(?i:continuous)$/
-#  only:
-#  - master
-#  - develop
+sudo: true
+
 language: node_js
 node_js:
-- '7'
+  - 7
+
 before_install:
-- 'pwd && ls -als'
-- npm -g install npm@latest
+  - pwd && ls -als
+  - npm -g install npm@latest
+  - sudo apt-get -y install wine
+
 install:
-- 'pwd && ls -als'
+  - pwd && ls -als
+
 before_script:
-- 'pwd && ls -als'
-- 'npm install'
+  - pwd && ls -als
+  - npm install
+
 script:
-- 'npm run lint'
-- 'npm run build'
-- 'npm run build && build -mwl'
+  - npm run lint
+  - npm run build
+  - sudo apt -y install wine
+  - npm run build && build -mwl
+
 after_success:
-- 'pwd && ls -als'
-- wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
-- bash upload.sh release/readium-desktop-*
+  - pwd && ls -als
+# Remove the next two lines if you do not want each build to be uploaded
+  - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
+  - bash upload.sh release/readium-desktop-* release/ReadiumDesktop-*
+
 after_failure:
-- 'pwd && ls -als'
+  - pwd && ls -als
+
+branches:
+  except:
+    - # Do not build tags that we create when we upload to GitHub Releases
+    - /^(?i:continuous)$/
+# only:
+#   - master
+#   - develop
