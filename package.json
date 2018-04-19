@@ -102,7 +102,6 @@
     "linux": {
       "artifactName": "${productName}",
       "target": [
-        "deb",
         "AppImage"
       ]
     }
