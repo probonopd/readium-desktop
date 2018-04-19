@@ -21,7 +21,7 @@ before_script:
 script:
   - npm run lint
   - npm run build
-  - npm run build && build -mwl
+  - build --win --linux=AppImage --mac=zip
 
 after_success:
   - pwd && ls -als
