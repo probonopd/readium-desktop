@@ -7,7 +7,9 @@ node_js:
 before_install:
   - pwd && ls -als
   - npm -g install npm@latest
-  - sudo apt-get -y install wine
+  - sudo add-apt-repository -y ppa:ubuntu-wine/ppa
+  - sudo apt-get update
+  - sudo apt-get install --no-install-recommends -y icnsutils wine1.8
 
 install:
   - pwd && ls -als
@@ -19,8 +21,6 @@ before_script:
 script:
   - npm run lint
   - npm run build
-  - sudo apt-get install --no-install-recommends -y icnsutils wine1.8
-  - sudo apt -y install wine
   - npm run build && build -mwl
 
 after_success:
